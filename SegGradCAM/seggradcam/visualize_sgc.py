@@ -97,11 +97,11 @@ class SegGradCAMplot(SegGradCAM):
 
         plt.title(title1, fontsize=fonts)
         # biased texture contour
-        if self.next_dict and self.image_id:
-            biasroi = BiasRoI(self.next_dict, self.image_id)
-            plt.contour(X, Y, biasroi.biased_mask, colors='magenta')  # 'black') #'purple')
-            if biasroi.biased_mask.any() != 0:
-                plt.title(title1bias, fontsize=fonts)
+        #if self.next_dict and self.image_id:
+        #    biasroi = BiasRoI(self.next_dict, self.image_id)
+        #    plt.contour(X, Y, biasroi.biased_mask, colors='magenta')  # 'black') #'purple')
+        #    if biasroi.biased_mask.any() != 0:
+        #        plt.title(title1bias, fontsize=fonts)
         plt.imshow(self.cam, cmap='jet',  # vmin=0,vmax=1,
                    alpha=0.6)
         jet = plt.colorbar(fraction=0.046, pad=0.04, ticks=[0, 0.2, 0.4, 0.6, 0.8, 1])
@@ -151,12 +151,12 @@ class SegGradCAMplot(SegGradCAM):
         plt.title('Input image', fontsize=fonts)
         X, Y = self.roi.meshgrid()
         # biased texture contour
-        if self.next_dict and self.image_id:
-            biasroi = BiasRoI(self.next_dict, self.image_id)
-            plt.contour(X, Y, biasroi.biased_mask, colors='magenta')  # 'black') #'purple')
-            # print(biasroi.biased_mask.any()==0, biasroi.biased_mask.all()==0)
-            if biasroi.biased_mask.any() != 0:
-                plt.title('Input image & biased texture', fontsize=fonts)
+        #if self.next_dict and self.image_id:
+        #    biasroi = BiasRoI(self.next_dict, self.image_id)
+        #    plt.contour(X, Y, biasroi.biased_mask, colors='magenta')  # 'black') #'purple')
+        #    # print(biasroi.biased_mask.any()==0, biasroi.biased_mask.all()==0)
+        #    if biasroi.biased_mask.any() != 0:
+        #        plt.title('Input image & biased texture', fontsize=fonts)
         if pixel:
             i, j = self.roi.i, self.roi.j
             plt.scatter(j, i, color='red', s=scatter_size)
