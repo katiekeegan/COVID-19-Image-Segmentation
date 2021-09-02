@@ -205,25 +205,25 @@ class TrainUnet:
 
     def fit_generator(self, trainset, valset):
         #datagen = self.dataAugment()
-        dry = self.trainparam.outfolder
-        self.cb.append(ModelCheckpoint(f"{dry}/weights.h5", save_best_only=True, save_weights_only=True))
-        params = dict(prefix_with_timestamp=False, n_images=3, write_images=True)
-        if self.trainparam.dataset_name == 'Cityscapes':
-            self.cb.append(CARETensorBoard(f"{dry}", **params,
-                                           output_slices=[[slice(None), slice(None), slice(None), slice(1, 8, 3)]]))
+        #dry = self.trainparam.outfolder
+        #self.cb.append(ModelCheckpoint(f"{dry}/weights.h5", save_best_only=True, save_weights_only=True))
+        #params = dict(prefix_with_timestamp=False, n_images=3, write_images=True)
+        #if self.trainparam.dataset_name == 'Cityscapes':
+        #    self.cb.append(CARETensorBoard(f"{dry}", **params,
+        #                                   output_slices=[[slice(None), slice(None), slice(None), slice(1, 8, 3)]]))
 
         self.compile()
-        if self.trainparam.dataset_name == 'Cityscapes':
-            train_input = self.datagen.flow(trainset.X, trainset.Y, batch_size=self.trainparam.batch_size)
-            # don't use generator for validation data that always produces different images in each epoch
-            # make numpy arrays for val data -> needed for CARETensorBoard to show images
-            val_input = self.datagen.flow(valset.X, valset.Y, batch_size=self.trainparam.batch_size*self.trainparam.validation_steps)
-            val_input = val_input[0]
-            validation_steps = None
-        else:
-            train_input = trainset
-            val_input = valset
-            validation_steps = self.trainparam.validation_steps
+        #if self.trainparam.dataset_name == 'Cityscapes':
+        #    train_input = self.datagen.flow(trainset.X, trainset.Y, batch_size=self.trainparam.batch_size)
+        #    # don't use generator for validation data that always produces different images in each epoch
+        #    # make numpy arrays for val data -> needed for CARETensorBoard to show images
+        #    val_input = self.datagen.flow(valset.X, valset.Y, batch_size=self.trainparam.batch_size*self.trainparam.validation_steps)
+        #    val_input = val_input[0]
+        #    validation_steps = None
+        #else:
+        train_input = trainset
+        val_input = valset
+        validation_steps = self.trainparam.validation_steps
 
         self.fit_out = self.model.fit_generator(train_input,
                                       validation_data=val_input,
