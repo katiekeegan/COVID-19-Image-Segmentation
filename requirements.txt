@@ -1,7 +1,7 @@
 tensorflow==1.14.0
 csbdeep==0.4.0
 scikit-image==0.14.2
-opencv-python==4.2.0
+opencv-python==4.2.0.32
 pandas==0.23.4
 scipy==1.1.0
 tqdm==4.29.1
