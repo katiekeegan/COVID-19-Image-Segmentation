@@ -1,4 +1,4 @@
-# COVID19ImageProject
+# COVID-19 Image Segmentation
  
 ## Preprocessing the Data
 # 1. Downloading the data
