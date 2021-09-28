@@ -8,7 +8,7 @@
 - Use the NBIA Data Retriever to unzip the images (select 'Descriptive Directory Name' type)
 - Run `code/preprocessing.py` to obtain the training and testing data (`x_val.joblib`,`y_val.joblib`,`x_train.joblib`,`y_train.joblib`)
 
-# 2. Machine Learning Algorithms - RF
+# 2. Machine Learning Algorithms
 # 2.1 Random Forest
 - Run `code/rf_training.py`
 - Note that `rf_training.py` generates the `rf_results.csv` file in the `results` folder, which is a spreadsheet that records the Dice coefficient for different 'n_estimators'. Feel free to change the `n_estimators` parameter, as well as the `n_jobs` parameters based on your computational resources.
