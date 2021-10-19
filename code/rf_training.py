@@ -31,10 +31,10 @@ errors_binary = []
 
 rf_model = RandomForestRegressor(n_estimators=0, n_jobs=-1, random_state=42, warm_start=True, verbose=4)
 
-#iterating through trees, 24 at a time
-for i in range(0,30):
-    #increase number of trees by 24 (more efficient since # vCPU = 24)
-    rf_model.n_estimators += 10
+#iterating through trees, 5 at a time
+for i in range(0,50):
+    #increase number of trees by 5
+    rf_model.n_estimators += 5
 
     print(rf_model.n_estimators)
     n_estimators_list.append(rf_model.n_estimators)
