@@ -18,5 +18,4 @@
 - Note that `svr_training.py` generates the `svr_results.csv` file in the `results` folder, which is a spreadsheet that records the Dice coefficient for different `C` (we only use a linear kernel for this experiment with just the `C` parameter being tuned). Feel free to change the `C` parameter.
 
 # 3. U-net
-- Interactive tutorial: 
-- Results: 
+- Run 'code/unet_training.py'
