@@ -168,7 +168,7 @@ def encoder_decoder(input_img, bottleneck_depth=5, n_classes=3, n_filters=16,
 class TrainUnet:
     def __init__(self, trainingParameters):
         self.trainparam = trainingParameters
-        self.cb = [keras.callbacks.EarlyStopping(patience=5), keras.callbacks.ModelCheckpoint(filepath='model.{epoch:02d}-{val_loss:.2f}.h5')]
+        self.cb = []
         self.model = None
         self.fit_out = None
         self.datagen = ImageDataGenerator(
