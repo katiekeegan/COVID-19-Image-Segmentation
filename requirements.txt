@@ -8,7 +8,6 @@ cloudpickle==2.0.0
 csbdeep==0.4.0
 cycler==0.10.0
 dask==2021.3.0
-dataclasses==0.8
 decorator==4.4.2
 dicom2nifti==2.3.0
 fastcache==1.1.0
