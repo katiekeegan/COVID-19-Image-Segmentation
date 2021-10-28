@@ -32,9 +32,9 @@ errors_binary = []
 rf_model = RandomForestRegressor(n_estimators=0, n_jobs=-1, random_state=42, warm_start=True, verbose=4)
 
 #iterating through trees, 5 at a time
-for i in range(0,50):
+for i in range(0,30):
     #increase number of trees by 5
-    rf_model.n_estimators += 5
+    rf_model.n_estimators += 10
 
     print(rf_model.n_estimators)
     n_estimators_list.append(rf_model.n_estimators)
@@ -51,7 +51,7 @@ for i in range(0,50):
     print(i, errors_binary[i])
   
     joblib.dump(rf_model, '../results/rf_model_{}.joblib'.format(rf_model.n_estimators))
-#joblib.dump(rf_model, 'rf_model_n_estimators_144.joblib')
+
 #create dataframe from data
 df = pd.DataFrame(columns=['Trees','Dice Coefficient'])
 df['Trees'] = n_estimators_list
