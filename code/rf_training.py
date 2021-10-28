@@ -45,11 +45,12 @@ for i in range(0,30):
     y_preds = rf_model.predict(y_val)
     y_preds_binary = tools.converttobinary(y_preds)
     joblib.dump(y_preds, '../results/rf_{}_y_preds.joblib'.format(rf_model.n_estimators))
-
+    
     #save error for this model
     errors_binary.append(tools.average_dice(y_preds_binary,y_val))
     print(i, errors_binary[i])
-  
+    
+    if errors_binary[i] > errors_binary[i-1] > errors_binary[i-2]:
     joblib.dump(rf_model, '../results/rf_model_{}.joblib'.format(rf_model.n_estimators))
 
 #create dataframe from data
