@@ -172,7 +172,7 @@ def obtain_training_testing_data():
     color = (1, 1, 1)
     print(len(dataset.get_image_ids()))
     random.seed(a=42)
-    randomlist = random.sample(range(0, len(dataset.get_image_ids())), 300)
+    randomlist = random.sample(range(0, len(dataset.get_image_ids())), 200)
     count = 0
     for i in randomlist:
         try: 
@@ -217,7 +217,7 @@ def obtain_training_testing_data():
             #list_of_errors.append(i)
             continue
             
-        if count == 250:
+        if count == 150:
             break
         
         else:
