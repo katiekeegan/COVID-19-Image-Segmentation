@@ -14,7 +14,6 @@ from skimage.measure import find_contours
 from matplotlib import patches
 from sklearn.model_selection import train_test_split
 import joblib
-import tools
 import os
 
 def remove_dup(a):
