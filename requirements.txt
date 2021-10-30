@@ -2,9 +2,6 @@ csbdeep==0.4.0
 dicom2nifti==2.3.0
 imageio==2.9.0
 Keras==2.2.4
-Keras-Applications==1.0.8
-Keras-Preprocessing==1.1.2
-Markdown==3.3.4
 matplotlib==3.3.4
 mdai==0.8.0
 nibabel==3.2.1
