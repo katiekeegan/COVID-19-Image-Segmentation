@@ -42,7 +42,7 @@ for i in range(0,30):
     #fit model
     rf_model.fit(x_train,y_train)
 
-    y_preds = rf_model.predict(y_val)
+    y_preds = rf_model.predict(x_val)
     y_preds_binary = tools.converttobinary(y_preds)
     joblib.dump(y_preds, '../results/rf_{}_y_preds.joblib'.format(rf_model.n_estimators))
     
