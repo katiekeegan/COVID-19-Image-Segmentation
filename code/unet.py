@@ -1,7 +1,5 @@
-%cd ../SegGradCam
-
-import numpy as np
 import os
+import numpy as np
 import pathlib
 import sys
 import keras
@@ -21,10 +19,9 @@ import tensorflow as tf
 import warnings
 warnings.filterwarnings('ignore')
 import numpy as np
-import os
 from pathlib import Path
 import sys
-
+os.chdir('../SegGradCAM')
 from seggradcam.dataloaders import Cityscapes
 #from seggradcam.metrics import IoU, Dice
 from seggradcam.unet import csbd_unet, manual_unet, TrainUnet
@@ -59,7 +56,7 @@ trainparam = TrainingParameters(
                 ,n_filter_base = 32  # 16
                 ,pool = 2
                 ,lr = 1.e-4
-                ,epochs = 20 #00 #                        CHANGE THE N OF EPOCHS
+                ,epochs = 500 #00 #                        CHANGE THE N OF EPOCHS
                 ,validation_steps = int(N_VAL/BATCH_SIZE)
                 ,steps_per_epoch = int(N_TRAIN/BATCH_SIZE)
                 ,loss = "binary_crossentropy"
@@ -73,35 +70,10 @@ trainparam.saveToJson()
 
 import tensorflow
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-datagen = ImageDataGenerator(
-    featurewise_center=False,
-    featurewise_std_normalization=False,
-    rotation_range=0,
-    width_shift_range=0,
-    height_shift_range=0,
-    horizontal_flip=False)
-
+datagen = ImageDataGenerator()
 from keras.utils import to_categorical
 y_train_new_new = to_categorical(y_train_new)
-print(type(y_train_new_new))
 y_val_new_new = to_categorical(y_val_new)
-print(type(y_val_new_new))
-
-import tensorflow
-from tensorflow.keras.preprocessing import ImageDataGenerator
-datagen = ImageDataGenerator(
-    featurewise_center=False,
-    featurewise_std_normalization=False,
-    rotation_range=0,
-    width_shift_range=0,
-    height_shift_range=0,
-    horizontal_flip=False)
-
-from keras.utils import to_categorical
-y_train_new_new = to_categorical(y_train_new)
-print(type(y_train_new_new))
-y_val_new_new = to_categorical(y_val_new)
-print(type(y_val_new_new))
 
 trainunet = TrainUnet(trainparam)
 trainunet.csbdUnet()
