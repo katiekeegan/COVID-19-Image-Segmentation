@@ -19,3 +19,9 @@
 
 # 3. U-net
 - Run `code/unet_training.py'
+
+
+
+
+
+Note that almost all code in the SegGradCam is from https://github.com/kiraving/SegGradCAM. Due to some modifications that had to be made within the code, a copy was made and modified within this repository, but credit for this part of the repository should go entirely to Vinogradova et al.
