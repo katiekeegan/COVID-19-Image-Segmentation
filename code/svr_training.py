@@ -15,7 +15,7 @@ from sklearn.ensemble import RandomForestClassifier
 from skimage.color import gray2rgb, rgb2gray, label2rgb
 import tools
 import joblib
-from sklearn.svm import SVR
+from sklearn.svm import SVR, LinearSVR, NuSVR
 from sklearn.multioutput import MultiOutputRegressor
 
 #loading the data
@@ -31,8 +31,8 @@ errors_binary_list = []
 
 #choosing c
 c = 0.01
-
-svr_model = MultiOutputRegressor(SVR(kernel='linear',C=c,verbose=4))
+e  = 0
+svr_model = MultiOutputRegressor(SVR(C=c, cache_size=50,verbose=4))
 
 print(c)
 
@@ -41,8 +41,8 @@ svr_model.fit(x_train,y_train)
 
 y_preds = svr_model.predict(x_val)
 
-joblib.dump(svr_model, 'svr_model_{}.joblib'.format(c)) 
-joblib.dump(y_preds, '../results/svr_{}_y_preds.joblib'.format(c))
+joblib.dump(svr_model, '../results/svr_model_c_{}.joblib'.format(c)) 
+joblib.dump(y_preds, '../results/svr_c_{}.joblib'.format(c))
 
 y_preds_binary = tools.converttobinary(y_preds)
 
