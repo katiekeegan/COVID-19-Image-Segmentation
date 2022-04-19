@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import Normalizer
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.multioutput import MultiOutputRegressor
 from skimage.measure import find_contours
 from matplotlib import patches
 from skimage import color
@@ -29,7 +30,7 @@ errors_binary = []
 #initializing rf_model
 #rf_model = joblib.load('rf_model_24.joblib')
 
-rf_model = RandomForestRegressor(n_estimators=0, n_jobs=-1, random_state=42, warm_start=True, verbose=4)
+rf_model = RandomForestRegressor(n_estimators=0, n_jobs=10, random_state=42, warm_start=True, verbose=4)
 
 #iterating through trees, 5 at a time
 for i in range(0,30):
@@ -50,9 +51,9 @@ for i in range(0,30):
     errors_binary.append(tools.average_dice(y_preds_binary,y_val))
     print(i, errors_binary[i])
     
-    if i > 2 and errors_binary[i] > errors_binary[i-1] > errors_binary[i-2]:
-        joblib.dump(rf_model, '../results/rf_model_{}.joblib'.format(rf_model.n_estimators))
-
+#    if i > 2 and errors_binary[i] > errors_binary[i-1] > errors_binary[i-2]:
+#        joblib.dump(rf_model, '../results/rf_model_{}.joblib'.format(rf_model.n_estimators))
+joblib.dump(rf_model, '../results/rf_model_1000.joblib')
 #create dataframe from data
 df = pd.DataFrame(columns=['Trees','Dice Coefficient'])
 df['Trees'] = n_estimators_list
@@ -60,4 +61,4 @@ df['Trees'] = n_estimators_list
 df['Dice Coefficient'] = errors_binary
 
 joblib.dump(df, '../results/rf_model_accuracy_results.joblib')
-df.to_csv('../results/rf_training_results.csv')
+df.to_csv('../results/rf_training_results.csv'
